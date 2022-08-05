@@ -1,0 +1,875 @@
+<html>
+
+<head>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+
+    <!-- modal -->
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+    
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 50%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+    
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+    
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+    
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+    
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+    
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #123764;
+            color: #ffd500;
+        }
+    
+        .modal-body {
+            padding: 2px 16px;
+        }
+    
+        .modal-footer {
+            padding: 1px 10px;
+            background-color: #123764;
+            color: #ffd500;
+        }
+    </style>
+
+
+    <style>
+
+        body {
+            background-size: auto,auto,100% auto;
+            background-image: url('https://www.ams.co.rs/img/grb-left.png'),url('https://www.ams.co.rs/img/grb-right.png');
+            background-position: left top 90px,right top 90px,center top;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* background-color: #cccccc; */
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+/* 
+        body  {
+            background-image: url("https://www.ams.co.rs/img/share.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: #cccccc;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        } */
+        
+        .high {
+            width: 500px;
+            image-resolution: 300dpi;
+        }
+    
+        .forma {
+            width: 650px;
+            background-color: rgb(255, 255, 255);
+            height: auto;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+            border: 1px solid black;
+            border-radius: 50px 15px;
+        }
+    
+        input[type=text],
+        select {
+            width: 90%;
+            padding: 12px 3px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+    
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+    
+        div {
+            border-radius: 5px;
+            /* background-color: #f2f2f2; */
+            padding: 20px;
+        }
+
+        h4 { 
+            color: #ffd500; 
+            font-family: 'Open Sans Condensed', sans-serif; 
+            font-size: 34px; 
+            font-weight: 500; 
+            line-height: 64px; 
+            margin: 0 0 0; 
+            padding: 5px 20px; 
+            text-align: center; 
+            text-transform: uppercase; 
+        }  
+        
+        h2 {
+            text-align: left;
+            font-family: 'Open Sans Condensed', sans-serif
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            font-size: 16px;
+            margin: 7px 2px;
+            cursor: pointer;
+            font-family: 'Open Sans Condensed', sans-serif
+        }
+
+
+        .button2 {background-color: #008CBA; } /* Blue */
+        .button3 {background-color: #f44336;} /* Red */ 
+        .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+        .button5 {background-color: #555555;} /* Black */
+
+    </style>
+        <script>
+
+            /*
+                Sektor za komercijalne poslove
+                    Služba prodajne mreže
+
+                Sektor za korporativne klijente i direktnu prodaju
+                    Služba za preuzimanje rizika
+                    Služba za imovinska osiguranja, saosiguranje i reosiguranje
+                                        
+                Sektor za prijavu, procenu i likvidaciju šteta
+                    Služba za prijem i likvidaciju šteta
+                    Služba za prijem i procenu šteta
+                    Služba za pravno regulisanje odštetnih zahteva
+                                            
+                Sektor za razvoj i marketing
+                    Služba za razvoj proizvoda
+                    Služba za marketing
+
+                Sektor za finansije, računovodstvo, investiranje i kontroling
+                    Služba za računovodstvo
+                    Služba za finansijsku operativu
+                    Služba za obradu dospelosti i naplatu potraživanja
+                    Služba za kontroling i izveštavanje
+
+                Sektor za IT
+                    Služba za sistemsku i mrežnu podršku
+                    Služba za informacioni sistem
+                    Služba za izveštavanje, održavanje i obradu podataka
+
+                Sektor za pravne poslove
+                    Služba za zastupanje i naplatu potraživanja iz sporova i regrese u mirnom postupku
+                    Služba za korporativno i ugovorno pravo
+
+                Sektor za logistiku
+                    Služba osnovnih sredstava i nabavke
+                    Služba voznog parka
+
+                ADRESA
+                    Beograd, Ruzveltova 16
+                    Novi Beograd, Tošin bunar 270đ
+            
+            **/
+
+            var lookup = {
+                'Izvrsni odbor': [''],
+                'Kabinet Predsednika Izvršnog odbora': [''],
+                'HR': [''],
+                'Aktuarska funkcija': [''],
+                'Upravljanje rizicima': [''],
+                'Sektor za komercijalne poslove': ['','Služba prodajne mreže'],
+                'Sektor za korporativne klijente i direktnu prodaju': ['', 'Služba za preuzimanje rizika', 'Služba za imovinska osiguranja, saosiguranje i reosiguranje'],
+                'Sektor za prijavu, procenu i likvidaciju šteta': ['', 'Služba za prijem i procenu šteta', 'Služba za prijem i likvidaciju šteta', 'Služba za pravno regulisanje odštetnih zahteva'],
+                'Sektor za razvoj i marketing': ['', 'Služba za razvoj proizvoda', 'Služba za marketing'],
+                'Sektor za finansije, računovodstvo, investiranje i kontroling': ['', 'Služba za računovodstvo', 'Služba za finansijsku operativu', 'Služba za obradu dospelosti i naplatu potraživanja', 'Služba za kontroling i izveštavanje'],
+                'Sektor za IT': ['', 'Služba za sistemsku i mrežnu podršku', 'Služba za informacioni sistem', 'Služba za izveštavanje, održavanje i obradu podataka'], 
+                'Sektor za pravne poslove': ['', 'Služba za korporativno i ugovorno pravo', 'Služba za zastupanje i naplatu potraživanja iz sporova i regrese u mirnom postupku'],
+                'Sektor za logistiku': ['', 'Služba osnovnih sredstava i nabavke', 'Služba voznog parka'],
+                'Služba za administraciju': [''],
+                'Interna revizija': [''],
+                'Sekretarijat i funkcija usklađenosti poslovanja': [''],
+                'Ovlašćeni aktuar': ['']
+            };
+
+            const log   = console.log;
+            const table = console.table;
+
+            $(document).ready(function () {
+                var getCanvas; // global variable
+            });
+
+        </script>
+
+        
+    </head>
+
+<body>
+
+
+    <div style="background-color: #0a2f61;"  height="5px">
+        <table>
+                <td>
+                    <img style="filter: brightness(0) invert(1);" src=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABGCAYAAAA6hjFpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFFmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDg4LCAyMDIwLzA3LzEwLTIyOjA2OjUzICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIyLTA2LTIyVDE0OjI0OjI5KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMi0wNi0yMlQxNDoyNTowNSswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMi0wNi0yMlQxNDoyNTowNSswMjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyNjc5Y2M4OC04Y2QyLWNl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" alt="" srcset="">
+                </td>
+                <td>
+                    <h4 style="color: rgb(255, 255, 255); font-family: Roboto,sans-serif;">E-mail signature</h4>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <br>
+
+    <div class="forma">
+
+        <table width="95%" style="margin: 0 auto; text-align:center">
+            <tr>
+                <td><h2>Ime i prezime</h2></td>
+                <td><input type="text" name="" id="ime_prezime" placeholder="Ime i prezime"></td>
+                <td><i id="IM_BTN" class="fa fa-info-circle" style="font-size:36px; color: rgb(110, 170, 226);"></i></td>
+            </tr>
+            <tr>
+                <td><h2>Pozicija</h2></td>
+                <td><input type="text" name="" id="pozicija" placeholder="Pozicija"></td>
+            </tr>
+            <tr>
+                <td><h2>Sektor</h2></td>
+                <td>
+                    <select id="options">
+                        <option value=""                                                                    id="IS">        Izaberite sektor                                                </option>
+                        <option value="Izvrsni odbor"                                                       id="IO">        Izvrsni odbor                                                   </option>
+                        <option value="Kabinet Predsednika Izvršnog odbora"                                 id="KPIO">      Kabinet Predsednika Izvršnog odbora                             </option>
+                        <option value="HR"                                                                  id="HR">        HR                                                              </option>
+                        <option value="Aktuarska funkcija"                                                  id="AF">        Aktuarska funkcija                                              </option>
+                        <option value="Upravljanje rizicima"                                                id="UR">        Upravljanje rizicima                                            </option>
+                        <option value="Sektor za komercijalne poslove"                                      id="SZKP">      Sektor za komercijalne poslove                                  </option>
+                        <option value="Sektor za korporativne klijente i direktnu prodaju"                  id="SZKKIDP">   Sektor za korporativne klijente i direktnu prodaju              </option>
+                        <option value="Sektor za prijavu, procenu i likvidaciju šteta"                      id="SZPPILS">   Sektor za prijavu, procenu i likvidaciju šteta                  </option>
+                        <option value="Sektor za razvoj i marketing"                                        id="SZRIM">     Sektor za razvoj i marketing                                    </option>
+                        <option value="Sektor za finansije, računovodstvo, investiranje i kontroling"       id="SZFRIIK">   Sektor za finansije, računovodstvo, investiranje i kontroling   </option>
+                        <option value="Sektor za IT"                                                        id="SZIT">      Sektor za IT                                                    </option>
+                        <option value="Sektor za pravne poslove"                                            id="SZPP">      Sektor za pravne poslove                                        </option>
+                        <option value="Sektor za logistiku"                                                 id="SZL">       Sektor za logistiku                                             </option>
+                        <option value="Služba za administraciju"                                            id="SZA">       Služba za administraciju                                        </option>
+                        <option value="Interna revizija"                                                    id="IR">        Interna revizija                                                </option>
+                        <option value="Sekretarijat i funkcija usklađenosti poslovanja"                     id="SIFUP">     Sekretarijat i funkcija usklađenosti poslovanja                 </option>
+                        <option value="Ovlašćeni aktuar"                                                    id="OA">        Ovlašćeni aktuar                                                </option>
+                    </select>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td><h2>Služba</h2></td>
+                <td id="td">
+                    <select id="choices" style="display: none;">
+                        <option value="" disabled selected>Izaberite službu</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><h2>Mobilni telefon</h2></td>
+                <td><input type="text" name="" id="mobilni_telefon" placeholder="Mobilni telefon"></td>
+                <td><i id="MT_BTN" class="fa fa-info-circle" style="font-size:36px; color: rgb(110, 170, 226);"></i></td>
+            </tr>
+            <tr>
+                <td><h2>Fiksni telefon</h2></td>
+                <td><input type="text" name="" id="fiksni_telefon" placeholder="Fiksni telefon"></td>
+                <td><i id="FT_BTN" class="fa fa-info-circle" style="font-size:36px; color: rgb(110, 170, 226);"></i></td>
+            </tr>
+            <tr>
+                <td><h2 for="">E-mail adresa</h2></td>
+                <td><input type="text" name="" id="email" placeholder="E-mail"></td>
+            </tr>
+            <tr>
+                <td><h2>Adresa</h2></td>
+                <td id="td2">
+
+                    <script>
+                        function toggleField(hideObj, showObj) {
+                          hideObj.disabled = true;
+                          hideObj.style.display = 'none';
+                          showObj.disabled = false;
+                          showObj.style.display = 'inline';
+                          showObj.focus();
+                        }
+                      </script>
+
+                    <select id="sektor_drop" onchange="if(this.options[this.selectedIndex].value=='customOption'){
+                        toggleField(this,this.nextSibling);
+                        this.selectedIndex='0';
+                    }">
+                        <option value="">                                                     Izaberite adresu                  </option>
+                        <option value="customOption">                                         [ Unesite lokaciju ]              </option>
+                        <option value="Beograd, Ruzveltova 16">                               Beograd, Ruzveltova 16            </option>
+                        <option value="Novi Beograd, Tošin bunar 270đ">                       Novi Beograd, Tošin bunar 270đ    </option>
+                    </select><input id="inp_ADR" type="text" style="display:none;" disabled="disabled"
+                        onblur="if(this.value==''){toggleField(this,this.previousSibling);}">
+
+                </td>
+                <td><i id="LO_BTN" class="fa fa-info-circle" style="font-size:36px; color: rgb(110, 170, 226);"></i></td>
+            </tr>
+            <tr>
+
+
+                
+                <!-- <td>
+                    
+                </td> -->
+                
+                
+                <!-- <td>
+                    <a id="btn-Convert-Html2Image" class="button buutton1" href="#">Download</a>
+                    
+                </td> -->
+            </tr>
+        </table>
+       
+        <div style="width:70%;display: flex;margin:auto;padding:0;">
+            <td style="display: flex; width: 100%; border: 1px solid black;" >
+                <!-- <input id="btn-Preview-Image" type="button" class="button button2" onclick="getValueInput();" value="Preview" /> -->
+                <input id="btn-Preview-Image" style="width: 55%; border-radius: 3px; " type="button" class="button button2" onclick="getValueInput();" value="&nbsp;&nbsp;&nbsp;Kreiranje potpisa"></input>
+                <a id="btn-Convert-Html2Image" style="width: 45%; border-radius: 3px; margin-left: 20px;" type="button" class="button buutton1" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Download</a>
+            </td>
+        </div>
+        <div id="previewImage" width = "1000" height = "1000"></div>
+        
+    </div>
+
+
+    <div id="html-content-holder" class="high">
+
+        <table>
+            <tbody><tr>
+            <td>
+            <table>
+            <tbody><tr>
+            <td>
+            <a href="https://www.ams.co.rs/">
+                <img class="AmsoLogo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABGCAYAAAA6hjFpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFFmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDg4LCAyMDIwLzA3LzEwLTIyOjA2OjUzICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIyLTA2LTIyVDE0OjI0OjI5KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMi0wNi0yMlQxNDoyNTowNSswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMi0wNi0yMlQxNDoyNTowNSswMjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyNjc5Y2M4OC04Y2QyLWNl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" alt="" srcset="">
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            <a href="https://www.instagram.com/ams_osiguranje/">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFFmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDg4LCAyMDIwLzA3LzEwLTIyOjA2OjUzICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIyLTA2LTIyVDE0OjQ0OjI0KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMi0wNi0yMlQxNDo0NTozMCswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMi0wNi0yMlQxNDo0NTozMCswMjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyODY3YTgwMC02Yjg5LTZlNDQtYjE4ZS0xYmZkNTViMWQ1ODUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Mjg2N2E4MDAtNmI4OS02ZTQ0LWIxOGUtMWJmZDU1YjFkNTg1IiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6Mjg2N2E4MDAtNmI4OS02ZTQ0LWIxOGUtMWJmZDU1YjFkNTg1Ij4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoyODY3YTgwMC02Yjg5LTZlNDQtYjE4ZS0xYmZkNTViMWQ1ODUiIHN0RXZ0OndoZW49IjIwMjItMDYtMjJUMTQ6NDQ6MjQrMDI6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMi4wIChXaW5kb3dzKSIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6hc3xeAAAB5ElEQVRIia3Vu2sUURQG8N9OJptgfIFREDWIir0gYmFpoSA2RgNqFR+kC1gFFazEIFgpKAhRCRokBAQfhfoXaGElPlBQsVFsLILR3RiLexcnm5l1TPLBMHPP45uPc869t7Jy14CIHTiJTeaPb7iLCUij8TiuL4A0i4O4gf62zp7tW/BkkYgb2Ib3CQb+FTlP9KZYXyJwCklmPSOUtK1FTprgV4HzO/ZgCdZgVebpxnKsxdWC/Ok0qshTugHrcBk9qKOK6ZjThbc4hs8438Qxk8rHYPzBqwI/3McbjAsTMoRl2YAkJwkeoy+zruOQUI6NeJiJ68VSPGsmKVLebnazNmMSZ/AO+4SN8iL6fwgbqBR5GtXCaXwyuzdbcQC/UYm+Ob0rKksW97C7yTYY319aJZYh78PTJtvF+O4WFHdoaibFZalnfOcwhhU4hQ+4iRF/y9eeJ7SIHGqZ79foFw63LjzC3gzH5P+Q78cl3M7YRgpibwkba2dZ8mGMCufOEFYLNa1G/xS+4jmu4YJQtjnkeU1N8RFHcFYYubow+5WotCI0dBRHczgqqdCMPHSKN0rEz0jYQFVrtDUUlkFHybgGaoniI3OhuJMIc3t4kYmvYLwxLWN4iRPC7V8rymqBqnAcTOAB/AHJ1Vyr9SQIlQAAAABJRU5ErkJggg==" style="width:22px;height:22px;" align="left">
+            </a>
+            
+              <a href="https://www.facebook.com/amsosiguranje/">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFFmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDg4LCAyMDIwLzA3LzEwLTIyOjA2OjUzICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIyLTA2LTIyVDE0OjQzOjIzKzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMi0wNi0yMlQxNDo0NToxNyswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMi0wNi0yMlQxNDo0NToxNyswMjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpkOTk3ZmUxYS0xYzAxLWMxNDAtYTZkOC02MTZjZWRmNGZmMjciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ZDk5N2ZlMWEtMWMwMS1jMTQwLWE2ZDgtNjE2Y2VkZjRmZjI3IiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6ZDk5N2ZlMWEtMWMwMS1jMTQwLWE2ZDgtNjE2Y2VkZjRmZjI3Ij4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpkOTk3ZmUxYS0xYzAxLWMxNDAtYTZkOC02MTZjZWRmNGZmMjciIHN0RXZ0OndoZW49IjIwMjItMDYtMjJUMTQ6NDM6MjMrMDI6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMi4wIChXaW5kb3dzKSIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/4FyrAAABOUlEQVRIic3UsStFYRjH8Y/rECkpMmIx3VUpkT/AYqNMSCmx+RuURTGSBQuDYrGbZDAohcEoBgYDXTcM9z05Kcc511V+9fac93l/z7en3vO8dW2Ds4KGMIke1esOu9iHKCTnsfoLaFLjWMNCfVNXXxGHNQLH6sdFAXM1Bscai9Ces+gKT2hCMc0Y4SUj9AZjOE3k3lP85Sjl8KumEuAiOgK87ruCPPCLECewHb7TOlfIAW8JsTeR+7ZrsnW+hmPch/2OyqV2YuW38CXcJvbXYakFfB3nWMYjBjDqh98wK3wkrM0AH8ZihrpcF1oK8SFrQR54bv0b+HOIpVRXlfDYmzo4SUVozug9QRmtGf0Nkc/J+0ldGX2x3goq4/0X2irgEjM1Bq/gIJ7QDZxhGt14rQLYqPIG7eEIPgDhSDUMWUCyxAAAAABJRU5ErkJggg==" style="width:22px;height:22px;" align="left">
+              </a>
+            
+              <a href="https://rs.linkedin.com/company/ams-osiguranje-a-d-o-">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFEGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDg4LCAyMDIwLzA3LzEwLTIyOjA2OjUzICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjIuMCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIyLTA2LTIyVDE0OjQzOjQ5KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMi0wNi0yMlQxNDo0NSswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMi0wNi0yMlQxNDo0NSswMjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3YWMxYmY0OS00ZDI1LWEwNDYtODA2MS0wYjRmNTFmMGJjOTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6N2FjMWJmNDktNGQyNS1hMDQ2LTgwNjEtMGI0ZjUxZjBiYzk5IiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6N2FjMWJmNDktNGQyNS1hMDQ2LTgwNjEtMGI0ZjUxZjBiYzk5Ij4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo3YWMxYmY0OS00ZDI1LWEwNDYtODA2MS0wYjRmNTFmMGJjOTkiIHN0RXZ0OndoZW49IjIwMjItMDYtMjJUMTQ6NDM6NDkrMDI6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMi4wIChXaW5kb3dzKSIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4QW8wcAAABc0lEQVRIibXVv0tWURzH8ZfHx9AgbApyEF3UCJyMCITGJkki1EEMGkQaGlta21zcIqgIgiIkQfAPsM1/QguHFovAH4OaPA73PHi43PtQ97l+lvO55/vhfQ6H8z236/rkkqhxPMOI6vqDr/gEjTg5gy8dQFM9wkPMdvcOTtzEVk3glm5jL+BpzeCWpgIGLwneE3BSUvyI9x3AzxpoFhQ+YyH6QzyvAG+GslXTUAUwLq5iXvOye3+MO3XDd7CLgJ8YwHKszeA3VnAVT3Dvf+DfXFzRNUzjRfx+hf0k+wabuJ+HlJ15f+Kv5Wr7mMODZO5lEaRs5+20hNfR38AeDoqCZTtvp1uJH4pjX13wo8T/bResAm+W+H+Gp2d4lKv9SvxOHH8UQRolC4zJ3mUYjuNjWedOJrlFbMd8Xl0N9BQU7sr+KKlWC3LLBXMthYDvbQKd6DTg3SXB14KsCaZqBn/A21aHbmBU1n2jOK0AvCLb6LrsPXIOQnw9uojXK04AAAAASUVORK5CYII=" style="width:22px;height:22px;" align="left">
+              </a>
+            </td>
+            </tr>
+            </tbody></table>
+            </td>
+            <td>
+            <img class="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAABVCAYAAABjPTVrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAfSURBVChTYxSwyfjPAARMIAIERhlAMMoAgmHOYGAAAA+DAl2P1/3OAAAAAElFTkSuQmCC" style="width:3px;height:70px;" align="left">
+            </td>
+            
+            <td>
+                <span style="font-size:14.0pt;font-family:Arial Black; color:#203864" id="ime_prezime_input"></span> 
+                <span id="_pozicija" style="font-size:14.0pt;font-family:Arial Black; color:#203864">|</span> 
+                <span id="pozicija_input" style="font-size:8pt;font-family:Arial;color:#203864"></span>
+                
+                <br>
+                
+                <span style="font-size:8.0pt;font-family:Arial; color:#203864;" id="sektor_input"></span> 
+
+                <span id="_sluzba" style="color:#203864;">|</span> 
+
+                <span style="font-size:8.0pt;font-family:Arial; color:#203864;" id="sluzba_input"></span>
+                
+                <br>
+                    
+                    <span style="font-size:8.0pt; font-family:Arial;color:#203864;">
+                        <span id="mb" >
+                            Mobilni: <span style="width: 200px;" id="mobilni_telefon_input"></span> 
+                        </span>
+                       
+                        <span id="_broj_t" style="color:#203864">|</span> 
+                        <span id="tl">
+                            Telefon: <span id="fiksni_telefon_input"></span> 
+                        </span>
+                    </span><br>
+                
+                <span style="font-size:8.0pt;font-family:Arial; color:#203864;">E-mail: <span id="email_input"></span> </span><br>
+                <span style="font-size:8.0pt; font-family:Arial;color:#203864;">Adresa: <span id="adresa_input"></span></span><br>
+                <span style="font-size:8.0pt; font-family:Arial;color:#203864;"></span>
+                
+                <a href="https://www.ams.co.rs">
+                
+                <span style="font-size:10.0pt;font-family:Arial Black; color:#203864">www.ams.co.rs</span></a>
+            
+            </td>
+            </tr>
+            </tbody></table>
+            <!-- <h1 id="meni"></h1> -->
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    // When an option is changed, search the above for matching choices
+    $('#options').on('change', function() {
+        // Set selected option as variable
+        var selectValue = $(this).val();
+
+        // Empty the target field
+        $('#choices').empty();
+
+        if (selectValue == '') {
+            
+            $('#_broj_t').hide();
+            $('#choices').hide();
+            $('#slobodanUnos').hide().val('');
+
+        } else if (selectValue == 'Izvrsni odbor' || selectValue == 'Kabinet Predsednika Izvršnog odbora' || 
+                selectValue == 'HR' || selectValue == 'Aktuarska funkcija' || 
+                selectValue == 'Upravljanje rizicima' || selectValue == 'Služba za administraciju' || 
+                selectValue == 'Interna revizija' || selectValue == 'Sekretarijat i funkcija usklađenosti poslovanja' || 
+                selectValue == 'Ovlašćeni aktuar') {
+              
+                $('#td').show();
+                $('#choices').hide();
+                $('#slobodanUnos').remove();
+
+                $('#td').append("<input id='slobodanUnos' type='text' ></input>");
+                
+            } else {
+                
+                $('#td').show();
+                $('#choices').show();
+                $('#slobodanUnos').remove();
+
+                // For each chocie in the selected option
+                for (i = 0; i < lookup[selectValue].length; i++) {
+                    // Output choice in the target field
+                    $('#choices').append("<option class='non' value='" + lookup[selectValue][i] + "'>" + lookup[selectValue][i] + "</option>");
+    
+                }
+
+            }  
+
+    });
+
+
+    const formatiranje_telefona = (broj) => {
+        const mobilni_069   = '069';
+        const fiksni_011    = '011';
+        const pozivni_broj  = '381';
+
+        var cleaned = ('' + broj).replace(/\D/g, '');
+
+        if (broj.substring(0,3) == mobilni_069 || broj.substring(0,3) == fiksni_011) {
+        
+            const novi_broj = `+381 ${cleaned.slice(1, 3)} ${cleaned.slice(3, 6)} ${cleaned.slice(6, 8)} ${cleaned.slice(8, 10)}`;
+            
+            return novi_broj;
+        
+        } else if (cleaned.substring(0,3) == pozivni_broj) {
+                                            
+            const novi_broj = `+381 ${cleaned.slice(3, 5)} ${cleaned.slice(5, 8)} ${cleaned.slice(8, 10)} ${cleaned.slice(10, 12)}`;
+            
+            return novi_broj;
+        
+        }
+        
+    }
+
+
+    const getValueInput = () => {
+
+        var sl;
+        var sluzba;
+        
+        const sk               = document.getElementById("options");
+     
+        if(document.getElementById("choices") != undefined && document.getElementById("choices").value != '') {
+
+             sl                = document.getElementById("choices");
+             sluzba            = sl.options[sl.selectedIndex].value;
+
+        } else if (document.getElementById("slobodanUnos") != undefined ) {
+
+             sl                = document.getElementById("slobodanUnos").value;
+             sluzba            = sl;
+        }
+        else {
+
+            sl = '';
+            sluzba = '';
+
+        }
+
+        
+        const ime_prezime       = document.getElementById("ime_prezime").value;
+        const pozicija          = document.getElementById("pozicija").value;
+        
+        const sektor            = sk.options[sk.selectedIndex].value;
+        
+        const mobilni_telefon   = document.getElementById("mobilni_telefon").value;
+        const fiksni_telefon    = document.getElementById("fiksni_telefon").value;
+        const email             = document.getElementById("email").value;
+
+
+        var lokacija = '';
+
+        const adresa_otions     = document.getElementById("sektor_drop").value;
+        const inp_adr           = document.getElementById('inp_ADR').value;
+        
+
+        if (adresa_otions == '') {
+            lokacija = inp_adr;
+        } else if (inp_adr == '') {
+            lokacija = adresa_otions;
+        }
+
+
+
+        (() => {
+        
+            if (sluzba.length == 0) {
+                $('#_sluzba').hide();
+            } else {
+                $('#_sluzba').show();
+            }
+
+            if (fiksni_telefon.length == 0 || mobilni_telefon.length == 0) {
+                $('#_broj_t').hide();
+            } else {
+                $('#_broj_t').show();
+            }
+
+            if (pozicija.length == 0 || ime_prezime.length == 0) {
+                $('#_pozicija').hide();
+            } else {
+                $('#_pozicija').show();
+            }
+
+
+            if (mobilni_telefon.length == 0) {
+                $("#mb").hide();
+            } else {
+                $("#mb").show();
+            }
+
+            
+            if (fiksni_telefon.length == 0) {
+                $("#tl").hide();
+            } else {
+                $("#tl").show();
+            }
+        
+        })();
+
+
+        document.getElementById("ime_prezime_input").innerHTML      = ime_prezime;
+
+        document.getElementById("pozicija_input").innerHTML         = pozicija;
+
+        document.getElementById("sektor_input").innerHTML           = sektor;
+
+        document.getElementById("sluzba_input").innerHTML           = sluzba;
+
+        document.getElementById("mobilni_telefon_input").innerHTML  = formatiranje_telefona(mobilni_telefon, 'mobilni');
+
+        document.getElementById("fiksni_telefon_input").innerHTML   = formatiranje_telefona(fiksni_telefon, 'fiksni');
+
+        document.getElementById("email_input").innerHTML            = email;
+
+        document.getElementById("adresa_input").innerHTML           = lokacija;
+
+        var element = $("#html-content-holder"); // global variable
+
+        html2canvas(element, {
+
+            onrendered: function (canvas) {
+                
+                $("#previewImage").html('');
+                $("#previewImage").append(canvas);
+                getCanvas = canvas;
+                
+            }
+
+        });
+
+        canvas();
+
+    }
+
+
+    function canvas()
+    {
+        
+        setTimeout(() => {
+            console.log('getCanvas');
+            console.log(getCanvas);
+
+            const ime_prezime = document.getElementById("ime_prezime").value;
+
+            var imgageData    = getCanvas.toDataURL("image/png");
+            // Now browser starts downloading it instead of just showing it
+            var newData       = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+            $("#btn-Convert-Html2Image").attr("download",  ime_prezime + " email signature" + ".png").attr("href", newData);
+        }, 300);
+        
+    }
+
+
+
+</script>
+
+ <!-- modal -->
+
+        <!-- The Modal -->
+        <div id="IME_PREZIME" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Ime i prezime</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Obavezno upisati ime i prezime sa našim slovima</p>
+                    <p>(uključujući: š, č, ć, ž, đ) !</p>
+                    
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="MOBILNI_TELEFON" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Mobilni telefon</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Mobilni telefon se unosi u formatu <span style="color: blue;">069870xxxx</span> bez razmaka, crtica i ostalih znakova!</p>
+                    <p>Program sam formatuje mobini telefon u <span style="color: blue;">+381 69 870 xx xx</span></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="FIKSNI_TELEFON" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Fiksni telefon</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Fiksni telefon se unosi u formatu <span style="color: blue;">011xxxxxxx</span> bez razmaka, crtica i ostalih znakova!</p>
+                    <p>Program sam formatuje fiksni telefon u <span style="color: blue;">+381 11 xxx xx xx</span></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="LOKACIJA" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Adresa</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Adresu možete izabrati iz liste ili uneti po potrebi</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- modal -->
+
+
+
+<!-- The Modal -->
+  <script>
+
+        // Get the modal
+        var modal_za_ime_prezime     = document.getElementById("IME_PREZIME");
+        var modal_za_mobilni_telefon = document.getElementById("MOBILNI_TELEFON");
+        var modal_za_fiksni_telefon  = document.getElementById("FIKSNI_TELEFON");
+        var modal_za_lokaciju        = document.getElementById("LOKACIJA");
+
+
+
+        // Get the button that opens the modal
+        var IM_BTN = document.getElementById("IM_BTN");
+        var MT_BTN = document.getElementById("MT_BTN");
+        var FT_BTN = document.getElementById("FT_BTN");
+        var LO_BTN = document.getElementById("LO_BTN");
+
+
+
+        // Get the <span> element that closes the modal
+        var IM_span = document.getElementsByClassName("close")[0];
+        var MT_span = document.getElementsByClassName("close")[1];
+        var FT_span = document.getElementsByClassName("close")[2];
+        var LO_span = document.getElementsByClassName("close")[3];
+
+
+
+        // When the user clicks the button, open the modal 
+        IM_BTN.onclick = function() {
+          modal_za_ime_prezime.style.display = "block";
+        }
+
+        MT_BTN.onclick = function() {
+          modal_za_mobilni_telefon.style.display = "block";
+        }
+
+        FT_BTN.onclick = function() {
+          modal_za_fiksni_telefon.style.display = "block";
+        }
+        
+        LO_BTN.onclick = function() {
+          modal_za_lokaciju.style.display = "block";
+        }
+
+
+
+        // When the user clicks on <span> (x), close the modal
+        IM_span.onclick = function() {
+          modal_za_ime_prezime.style.display = "none";
+        }
+
+        MT_span.onclick = function() {
+          modal_za_mobilni_telefon.style.display = "none";
+        }
+
+        FT_span.onclick = function() {
+          modal_za_fiksni_telefon.style.display = "none";
+        }
+
+        LO_span.onclick = function() {
+          modal_za_lokaciju.style.display = "none";
+        }
+
+        
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal_za_ime_prezime) {
+        modal_za_ime_prezime.style.display = "none";
+      } else if (event.target == modal_za_mobilni_telefon){
+        modal_za_mobilni_telefon.style.display = "none";
+      } else if (event.target == modal_za_fiksni_telefon){
+        modal_za_fiksni_telefon.style.display = "none";
+      } else if (event.target == modal_za_lokaciju){
+        modal_za_lokaciju.style.display = "none";
+      }
+    }
+    </script>
+<!-- modal -->
